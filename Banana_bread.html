@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>Banana Bread</title>
+
+
+<style>
+
+
+body{
+   background-color:#a25715bf;
+   margin:0;
+   padding:30px;
+   text-align:center;
+}
+
+.home-button{
+   position:absolute;
+   top:20px;
+   left:20px;
+
+   width:50px;
+   height:50px;
+
+   background-color:#e7bc96;
+   color:#9c754e;
+
+   border:3px solid #895241;
+   border-radius:15px;
+
+   display:flex;
+   align-items:center;
+   justify-content:center;
+
+   text-decoration:none;
+   font-size:26px;
+   font-weight:bold;
+
+   box-shadow:0 4px 8px rgba(126,29,45,0.2);
+
+   transition:0.2s;
+}
+
+.home-button:hover{
+   background-color:#ecadb1;
+   color:#FFF0F0;
+   transform:scale(1.08);
+}
+
+h1{
+   font-family:"Comic Sans MS", cursive;
+   font-size:60px;
+   color:#5c3f21;
+   text-shadow:
+   -2px -2px 0 #F5E6C8,
+    2px -2px 0 #F5E6C8,
+   -2px  2px 0 #F5E6C8,
+    2px  2px 0 #F5E6C8;
+}
+
+
+.subtitle{
+   font-family:"Comic Sans MS", cursive;
+   font-size:24px;
+   color:#6B4226;
+   background:rgba(245,230,200,0.75);
+   display:inline-block;
+   padding:15px 25px;
+   border-radius:20px;
+   margin-bottom:40px;
+}
+
+
+/* Main Section */
+
+
+.main-box{
+   display:flex;
+   justify-content:center;
+   align-items:center;
+   gap:35px;
+   flex-wrap:wrap;
+   max-width:1000px;
+   margin:auto;
+}
+
+
+.photo-wrap{
+   position:relative;
+   display:inline-block;
+}
+
+
+.photo-wrap img{
+   width:500px;
+   border-radius:25px;
+   border:8px solid rgb(98, 76, 57);
+
+
+   box-shadow:
+   0 0 0 4px rgb(224, 197, 142),
+   0 0 0 8px rgb(85, 69, 49),
+   0 8px 20px rgb(82, 64, 46);
+}
+
+
+.cute-text{
+   width:340px;
+   font-family:"Comic Sans MS", cursive;
+   font-size:20px;
+   line-height:1.7;
+   color:rgb(253, 218, 141);
+
+
+   background:#f5e0b2;
+   padding:20px;
+   border-radius:25px;
+   border:4px solid rgb(149,101,38);
+
+
+   text-shadow:
+   -1px -1px 0 rgb(191, 137, 67),
+    1px -1px 0 rgb(205, 136, 58),
+   -1px  1px 0 rgb(168, 121, 63),
+    1px  1px 0 rgb(191, 118, 54);
+}
+
+
+/* Stickers */
+
+
+.sticker{
+   position:absolute;
+   font-size:30px;
+   filter:drop-shadow(0 0 6px white);
+}
+
+
+.s1{top:15px;left:-25px;}
+.s2{top:70px;right:-25px;}
+.s3{bottom:120px;left:-30px;}
+.s4{top:180px;right:-25px;}
+.s5{bottom:20px;right:-20px;}
+.s6{bottom:10px;left:-20px;}
+.s7{top:-15px;left:90px;}
+.s8{top:120px;left:-20px;}
+.s9{bottom:220px;right:-20px;}
+.s10{top:280px;left:-25px;}
+.s11{bottom:90px;right:-30px;}
+.s12{top:40px;right:70px;}
+
+.cute-line{
+   color:rgb(133,79,22);
+   font-size:34px;
+   font-family:"Comic Sans MS", cursive;
+
+
+   text-shadow:
+   -2px -2px 0 white,
+    2px -2px 0 white,
+   -2px  2px 0 white,
+    2px  2px 0 white;
+
+
+   border-bottom:3px solid rgb(144,127,97);
+   display:inline-block;
+   padding-bottom:5px;
+   margin-top:50px;
+}
+
+
+table{
+   width:90%;
+   margin:30px auto;
+   border-collapse:collapse;
+   font-family:"Comic Sans MS", cursive;
+}
+
+
+th{
+   background:#8d5a2b;
+   color:white;
+}
+
+
+td,th{
+   border:2px solid #79440e;
+   padding:12px;
+}
+
+
+tr:nth-child(even){
+   background:#c58e53;
+}
+
+
+tr:nth-child(odd){
+   background:#ddb17a;
+}
+
+
+/* Small Description */
+
+
+.info-box{
+   max-width:650px;
+   margin:30px auto;
+   font-family:"Comic Sans MS", cursive;
+   font-size:22px;
+   color:rgb(148, 112, 79);
+   background-color:rgb(237,212,157);
+   padding:15px 20px;
+   border-radius:20px;
+}
+
+.recipe-box{
+   width:90%;
+   max-width:900px;
+   margin:50px auto;
+}
+
+
+.howto-title{
+   display:inline-block;
+   font-family:"Comic Sans MS", cursive;
+   font-size:42px;
+   color:rgb(247,212,136);
+
+
+   text-shadow:
+   -2px -2px 0 rgb(96, 55, 20),
+    2px -2px 0 rgb(139, 96, 52),
+   -2px  2px 0 rgb(90, 61, 22),
+    2px  2px 0 rgb(95, 67, 12);
+}
+
+
+.step{
+   background:rgb(244, 226, 173);
+   border-radius:20px;
+   padding:18px;
+   margin:18px 0;
+   border:3px solid rgb(185, 164, 78);
+}
+
+
+.step h3{
+   font-family:"Comic Sans MS", cursive;
+   color:rgb(86, 57, 33);
+}
+
+
+.step p{
+   font-family:"Comic Sans MS", cursive;
+   color:rgb(95,72,43);
+   line-height:1.6;
+}
+
+
+.enjoy{
+   font-family:"Comic Sans MS", cursive;
+   font-size:24px;
+   color:rgb(99, 64, 15);
+   margin-top:30px;
+}
+
+
+</style>
+</head>
+
+
+<body>
+
+
+<a href="index.html" class="home-button">⌂</a>
+
+<h1>🍌 Banana Bread 🍌</h1>
+
+
+<p class="subtitle">
+   Soft, moist, and packed with sweet banana flavour!
+</p>
+
+
+<div class="main-box">
+
+
+   <div class="photo-wrap">
+
+
+       <img src="Banana Bread.jpeg" alt="Banana Bread">
+
+
+       <span class="sticker s1">🍌</span>
+       <span class="sticker s2">⭐</span>
+       <span class="sticker s3">🍌</span>
+       <span class="sticker s4">✨</span>
+       <span class="sticker s5">🍌</span>
+       <span class="sticker s6">⭐</span>
+       <span class="sticker s7">🥐</span>
+       <span class="sticker s8">🤎</span>
+       <span class="sticker s9">🍌</span>
+       <span class="sticker s10">✨</span>
+       <span class="sticker s11">🤎</span>
+       <span class="sticker s12">🍞</span>
+
+
+   </div>
+
+
+   <p class="cute-text">
+       Freshly baked banana bread with a soft, moist texture and rich banana flavour.
+       Made with ripe bananas and simple ingredients, this cosy café-style treat is
+       sweet, fluffy, and perfect for breakfast, dessert, or an afternoon snack.
+       Every slice is warm, comforting, and packed with homemade goodness.
+   </p>
+   </div>
+
+<style>
+.main-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 35px;
+  width: 900px;
+  margin: auto;
+}
+
+.photo-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.photo-wrap img {
+  width: 300px;
+  border-radius: 25px;
+  border: 8px solid white;
+  box-shadow:
+    0 0 0 4px rgb(192, 122, 85),
+    0 0 0 8px rgb(168, 100, 37),
+    0 8px 20px rgba(232, 143, 169, 0.35);
+}
+
+.cute-text {
+  text-shadow:
+    -1px -1px 0 white,
+     1px -1px 0 white,
+    -1px  1px 0 white,
+     1px  1px 0 white;
+     width: 320px;
+  font-family: "Comic Sans MS", cursive;
+  font-size: 20px;
+  color: rgb(147, 86, 46);
+  line-height: 1.6;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 20px;
+  border-radius: 25px;
+  border: 4px solid rgb(178, 99, 56);
+  box-shadow: 0 4px 12px rgba(201, 79, 115, 0.2);
+}
+
+.sticker {
+  position: absolute;
+  font-size: 28px;
+  filter: drop-shadow(0 0 6px white);
+}
+
+.s1 { top: 15px; left: -30px; }
+.s2 { top: 70px; right: -25px; }
+.s3 { bottom: 130px; left: -35px; }
+.s4 { top: 180px; right: -30px; }
+.s5 { bottom: 20px; right: -20px; }
+.s6 { bottom: 10px; left: -25px; }
+.s7 { top: -15px; left: 90px; }
+.s8 { top: 120px; left: -20px; }
+.s9 { bottom: 220px; right: -20px; }
+.s10 { top: 280px; left: -25px; }
+.s11 { bottom: 90px; right: -30px; }
+.s12 { top: 40px; right: 70px; }
+</style>
+
+
+</div>
+
+
+<p class="cute-line">🍌 Key Ingredients 🍌</p>
+
+
+<table>
+
+
+<tr>
+<th>Ingredients</th>
+<th>Measurements</th>
+<th>Use</th>
+</tr>
+
+
+<tr>
+<td>Ripe Bananas</td>
+<td>3 medium</td>
+<td>Main flavour and moisture</td>
+</tr>
+
+
+<tr>
+<td>All-Purpose Flour</td>
+<td>1½ cups</td>
+<td>Creates structure</td>
+</tr>
+
+
+<tr>
+<td>Baking Soda</td>
+<td>1 tsp</td>
+<td>Helps the bread rise</td>
+</tr>
+
+
+<tr>
+<td>Brown Sugar</td>
+<td>¾ cup</td>
+<td>Adds sweetness and flavour</td>
+</tr>
+
+
+<tr>
+<td>Egg</td>
+<td>1</td>
+<td>Binds ingredients together</td>
+</tr>
+
+
+<tr>
+<td>Butter</td>
+<td>½ cup melted</td>
+<td>Adds richness and moisture</td>
+</tr>
+
+
+<tr>
+<td>Vanilla Extract</td>
+<td>1 tsp</td>
+<td>Extra flavour</td>
+</tr>
+
+
+<tr>
+<td>Cinnamon (Optional)</td>
+<td>½ tsp</td>
+<td>Warm spice flavour</td>
+</tr>
+
+
+</table>
+
+
+<div class="info-box">
+   Sweet bananas, warm cinnamon, and buttery goodness make this banana bread soft,
+   fluffy, and absolutely delicious!
+</div>
+
+
+<div class="recipe-box">
+
+
+<h2 class="howto-title">🍌 How to Make Banana Bread 🍌</h2>
+
+
+<div class="step">
+<h3>Step 1: Prepare the Bananas</h3>
+<p>
+Mash the ripe bananas in a large bowl until smooth.
+The riper the bananas are, the sweeter and more flavourful your banana bread will be.
+</p>
+</div>
+
+
+<div class="step">
+<h3>Step 2: Mix the Wet Ingredients</h3>
+<p>
+Add the melted butter, brown sugar, egg, and vanilla extract.
+Mix until everything is smooth and well combined.
+</p>
+</div>
+
+
+<div class="step">
+<h3>Step 3: Add the Dry Ingredients</h3>
+<p>
+Add the flour, baking soda, and cinnamon.
+Stir gently until no dry flour remains. Avoid overmixing the batter.
+</p>
+</div>
+
+
+<div class="step">
+<h3>Step 4: Bake</h3>
+<p>
+Pour the batter into a greased loaf pan.
+Bake at 175°C (350°F) for 50–60 minutes or until a skewer inserted into the centre comes out clean.
+</p>
+</div>
+
+
+<div class="step">
+<h3>Step 5: Cool and Serve</h3>
+<p>
+Allow the banana bread to cool for 10–15 minutes before slicing.
+Enjoy warm on its own or with a little butter.
+</p>
+</div>
+
+
+<p class="enjoy">
+✨ Enjoy a warm slice of soft, moist banana bread packed with sweet banana flavour and homemade comfort! 🍌🍞✨
+</p>
+
+
+</div>
+
+
+</body>
+</html>
