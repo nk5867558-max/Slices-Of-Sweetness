@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Fruit Catch Game 🍓</title>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #F7E6EA;
+      overflow: hidden;
+    }
+
+    .game-header {
+      text-align: center;
+      background-color: #fff0f4;
+      padding: 15px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+      position: relative;
+      z-index: 100;
+    }
+
+    .game-header h1 {
+      margin: 5px;
+      color: #d48ca2;
+      font-family: "Comic Sans MS", cursive;
+      font-size: 35px;
+    }
+
+    .game-header p {
+      color: #8b495b;
+      margin: 5px;
+    }
+
+    /* SCORE / LEVEL / LIVES */
+
+    .score-board {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #8b495b;
+    }
+
+    /* GAME AREA */
+
+    #gameArea {
+      position: relative;
+      width: 100%;
+      height: calc(100vh - 155px);
+      overflow: hidden;
+    }
+
+    /* FALLING FRUIT */
+
+    .fruit {
+      position: absolute;
+      font-size: 45px;
+      cursor: pointer;
+      user-select: none;
+      z-index: 20;
+      transition: transform 0.1s;
+    }
+
+    .fruit:hover {
+      transform: scale(1.2);
+    }
+
+    /* 😋 CHARACTER */
+
+    .eating-area {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 130px;
+      z-index: 50;
+      pointer-events: none;
+    }
+
+    .mouth {
+      position: absolute;
+      font-size: 65px;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      transition: left 0.2s ease;
+    }
+
+    .chomp {
+      animation: chomp 0.4s ease;
+    }
+
+    @keyframes chomp {
+
+      0% {
+        transform: translateX(-50%) scale(1);
+      }
+
+      30% {
+        transform: translateX(-50%) scale(1.35);
+      }
+
+      60% {
+        transform: translateX(-50%) scale(0.85);
+      }
+
+      100% {
+        transform: translateX(-50%) scale(1);
+      }
+
+    }
+
+    .eating-area p {
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      margin: 0;
+      color: #8b495b;
+      font-weight: bold;
+      background-color: white;
+      padding: 6px 12px;
+      border-radius: 15px;
+      white-space: nowrap;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .level-popup {
+      position: absolute;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      padding: 25px 45px;
+      border-radius: 20px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+      color: #d48ca2;
+      font-size: 35px;
+      font-weight: bold;
+      text-align: center;
+      z-index: 90;
+      animation: levelPop 1.5s ease forwards;
+    }
+
+    @keyframes levelPop {
+
+      0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+      }
+
+      20% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.1);
+      }
+
+      40% {
+        transform: translate(-50%, -50%) scale(1);
+      }
+
+      80% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+
+    }
+
+    .game-over {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+      text-align: center;
+      z-index: 100;
+    }
+
+    .game-over h2 {
+      color: #d48ca2;
+      font-size: 30px;
+    }
+
+    .game-over p {
+      color: #8b495b;
+      font-size: 20px;
+    }
+
+    button,
+    .home-button {
+      display: inline-block;
+      text-decoration: none;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 12px;
+      background-color: #d48ca2;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 5px;
+    }
+
+    button:hover,
+    .home-button:hover {
+      background-color: #b96f87;
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+  <div class="game-header">
+
+    <h1>🍓 Fruit Catch! 🍓</h1>
+
+    <p>
+      Catch the fruit before 😋 eats it!
+    </p>
+
+    <div class="score-board">
+
+      <span>
+        ⭐ Score:
+        <span id="score">0</span>
+      </span>
+
+      <span>
+        🎮 Level:
+        <span id="level">1</span>
+      </span>
+
+      <span>
+        ❤️ Lives:
+        <span id="lives">3</span>
+      </span>
+
+    </div>
+
+  </div>
+
+
+  <!-- GAME AREA -->
+
+  <div id="gameArea">
+
+
+    <!-- 😋 CHARACTER -->
+
+    <div class="eating-area">
+
+      <div id="mouth" class="mouth">
+        😋
+      </div>
+
+      <p>
+        Catch the fruit before I eat it!
+      </p>
+
+    </div>
+
+
+  </div>
+
+
+  <script>
+
+
+    const gameArea =
+      document.getElementById("gameArea");
+
+    const scoreDisplay =
+      document.getElementById("score");
+
+    const livesDisplay =
+      document.getElementById("lives");
+
+    const levelDisplay =
+      document.getElementById("level");
+
+    const mouth =
+      document.getElementById("mouth");
+
+
+    let score = 0;
+
+    let lives = 3;
+
+    let level = 1;
+
+    let gameRunning = true;
+
+
+    /* FRUITS */
+
+    const fruits = [
+
+      "🍓",
+      "🍌",
+      "🍑",
+      "🫐",
+      "🥭",
+      "🍇",
+      "🍎",
+      "🍊",
+      "🍉"
+
+    ];
+
+    let audioContext;
+
+
+    function startAudio() {
+
+      if (!audioContext) {
+
+        audioContext =
+          new (
+            window.AudioContext ||
+            window.webkitAudioContext
+          )();
+
+      }
+
+      if (
+        audioContext.state ===
+        "suspended"
+      ) {
+
+        audioContext.resume();
+
+      }
+
+    }
+
+    function playDing() {
+
+      startAudio();
+
+
+      const oscillator =
+        audioContext.createOscillator();
+
+      const gain =
+        audioContext.createGain();
+
+
+      oscillator.type = "sine";
+
+
+      oscillator.frequency.setValueAtTime(
+        880,
+        audioContext.currentTime
+      );
+
+
+      oscillator.frequency.exponentialRampToValueAtTime(
+        1400,
+        audioContext.currentTime + 0.08
+      );
+
+
+      gain.gain.setValueAtTime(
+        0.25,
+        audioContext.currentTime
+      );
+
+
+      gain.gain.exponentialRampToValueAtTime(
+        0.001,
+        audioContext.currentTime + 0.25
+      );
+
+
+      oscillator.connect(gain);
+
+      gain.connect(
+        audioContext.destination
+      );
+
+
+      oscillator.start();
+
+      oscillator.stop(
+        audioContext.currentTime + 0.25
+      );
+
+    }
+
+
+    /* YUM SOUND */
+
+    function playYum() {
+
+      startAudio();
+
+
+      const oscillator =
+        audioContext.createOscillator();
+
+      const gain =
+        audioContext.createGain();
+
+
+      oscillator.type = "sine";
+
+
+      oscillator.frequency.setValueAtTime(
+        500,
+        audioContext.currentTime
+      );
+
+
+      oscillator.frequency.exponentialRampToValueAtTime(
+        250,
+        audioContext.currentTime + 0.25
+      );
+
+
+      gain.gain.setValueAtTime(
+        0.3,
+        audioContext.currentTime
+      );
+
+
+      gain.gain.exponentialRampToValueAtTime(
+        0.001,
+        audioContext.currentTime + 0.35
+      );
+
+
+      oscillator.connect(gain);
+
+      gain.connect(
+        audioContext.destination
+      );
+
+
+      oscillator.start();
+
+      oscillator.stop(
+        audioContext.currentTime + 0.35
+      );
+
+    }
+
+
+    /* =========================
+       LEVEL SYSTEM
+       ========================= */
+
+    function checkLevel() {
+
+
+      let newLevel;
+
+
+      if (score >= 50) {
+
+        newLevel = 3;
+
+      }
+
+      else if (score >= 20) {
+
+        newLevel = 2;
+
+      }
+
+      else {
+
+        newLevel = 1;
+
+      }
+
+
+      /* LEVEL CHANGED */
+
+      if (newLevel !== level) {
+
+        level = newLevel;
+
+        levelDisplay.textContent =
+          level;
+
+
+        showLevelPopup(
+          "LEVEL " + level + "! 🎉"
+        );
+
+      }
+
+
+      /* REACH 100 */
+
+      if (score >= 100) {
+
+        winGame();
+
+      }
+
+    }
+
+
+    /* LEVEL POPUP */
+
+    function showLevelPopup(text) {
+
+
+      const popup =
+        document.createElement("div");
+
+
+      popup.classList.add(
+        "level-popup"
+      );
+
+
+      popup.textContent =
+        text;
+
+
+      gameArea.appendChild(
+        popup
+      );
+
+
+      setTimeout(function () {
+
+        popup.remove();
+
+      }, 1500);
+
+    }
+
+
+    /* =========================
+       CREATE FRUIT
+       ========================= */
+
+    function createFruit() {
+
+
+      if (!gameRunning) {
+
+        return;
+
+      }
+
+
+      const fruit =
+        document.createElement("div");
+
+
+      fruit.classList.add(
+        "fruit"
+      );
+
+
+      fruit.textContent =
+        fruits[
+          Math.floor(
+            Math.random() *
+            fruits.length
+          )
+        ];
+
+
+      const gameWidth =
+        gameArea.clientWidth;
+
+
+      const fruitSize = 50;
+
+
+      const randomX =
+        Math.random() *
+        (gameWidth - fruitSize);
+
+
+      fruit.style.left =
+        randomX + "px";
+
+
+      fruit.style.top =
+        "-60px";
+
+
+      gameArea.appendChild(
+        fruit
+      );
+
+
+      let position = -60;
+
+
+      /* LEVEL SPEED */
+
+      let speed;
+
+
+      if (level === 1) {
+
+        speed =
+          2 + Math.random() * 2;
+
+      }
+
+      else if (level === 2) {
+
+        speed =
+          3.5 + Math.random() * 2;
+
+      }
+
+      else {
+
+        speed =
+          5 + Math.random() * 2;
+
+      }
+
+
+      const fall =
+        setInterval(function () {
+
+
+          if (!gameRunning) {
+
+            clearInterval(fall);
+
+            fruit.remove();
+
+            return;
+
+          }
+
+
+          /* MOVE FRUIT */
+
+          position += speed;
+
+
+          fruit.style.top =
+            position + "px";
+
+
+          /* MAKE 😋 FOLLOW FRUIT */
+
+          const fruitX =
+            parseFloat(
+              fruit.style.left
+            );
+
+
+          mouth.style.left =
+            (fruitX + 22) + "px";
+
+
+          /* REACH MOUTH */
+
+          if (
+            position >
+            gameArea.clientHeight - 120
+          ) {
+
+
+            clearInterval(fall);
+
+            fruit.remove();
+
+
+            loseLife();
+
+          }
+
+
+        }, 20);
+
+      fruit.addEventListener(
+        "click",
+        function () {
+
+
+          if (!gameRunning) {
+
+            return;
+
+          }
+
+
+          clearInterval(fall);
+
+          fruit.remove();
+
+
+          /* SCORE */
+
+          score++;
+
+
+          scoreDisplay.textContent =
+            score;
+
+
+          /* DING */
+
+          playDing();
+
+
+          /* CHECK LEVEL */
+
+          checkLevel();
+
+
+        }
+      );
+
+
+    }
+
+    function loseLife() {
+
+
+      if (!gameRunning) {
+
+        return;
+
+      }
+
+
+      lives--;
+
+
+      livesDisplay.textContent =
+        lives;
+
+
+      /* YUM */
+
+      playYum();
+
+
+      /* CHOMP */
+
+      mouth.classList.remove(
+        "chomp"
+      );
+
+
+      void mouth.offsetWidth;
+
+
+      mouth.classList.add(
+        "chomp"
+      );
+
+
+      setTimeout(function () {
+
+        mouth.classList.remove(
+          "chomp"
+        );
+
+      }, 400);
+
+      if (lives <= 0) {
+
+        endGame();
+
+      }
+
+    }
+
+
+    /* =========================
+       WIN GAME
+       ========================= */
+
+    function winGame() {
+
+
+      gameRunning = false;
+
+
+      const winScreen =
+        document.createElement(
+          "div"
+        );
+
+
+      winScreen.classList.add(
+        "game-over"
+      );
+
+
+      winScreen.innerHTML = `
+
+        <h2>
+          🏆 YOU WIN! 🏆
+        </h2>
+
+        <p>
+          You reached 100 points!
+        </p>
+
+        <p>
+          😋 couldn't eat all the fruit!
+        </p>
+
+        <p>
+          Final Score:
+          <strong>${score}</strong>
+        </p>
+
+        <button
+          onclick="restartGame()">
+          🔄 Play Again
+        </button>
+
+        <a
+          href="index.html"
+          class="home-button">
+          🏠 Home
+        </a>
+
+      `;
+
+
+      gameArea.appendChild(
+        winScreen
+      );
+
+    }
+
+    function endGame() {
+
+
+      gameRunning = false;
+
+
+      const gameOver =
+        document.createElement(
+          "div"
+        );
+
+
+      gameOver.classList.add(
+        "game-over"
+      );
+
+
+      gameOver.innerHTML = `
+
+        <h2>
+          Game Over! 🍰
+        </h2>
+
+        <p>
+          😋 ate all the fruit!
+        </p>
+
+        <p>
+          Your score was:
+          <strong>${score}</strong>
+        </p>
+
+        <button
+          onclick="restartGame()">
+          🔄 Play Again
+        </button>
+
+        <a
+          href="index.html"
+          class="home-button">
+          🏠 Home
+        </a>
+
+      `;
+
+
+      gameArea.appendChild(
+        gameOver
+      );
+
+    }
+
+    function restartGame() {
+
+      location.reload();
+
+    }
+
+
+    /* CREATE FRUIT */
+
+    setInterval(
+      createFruit,
+      900
+    );
+
+
+  </script>
+
+
+</body>
+
+</html>
