@@ -1,0 +1,2605 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Slices of Sweetness 🧁</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    padding:0;
+
+    background:#F8DDE7;
+
+    font-family:"Comic Sans MS", cursive;
+
+    text-align:center;
+
+    color:#8B495B;
+}
+
+.topnav{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:12px;
+
+    padding:14px;
+
+    background:#FFF0F4;
+
+    box-shadow:
+    0 3px 10px rgba(0,0,0,0.10);
+
+    flex-wrap:wrap;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:1000;
+}
+
+
+.topnav a{
+
+    color:#8B495B;
+
+    text-decoration:none;
+
+    padding:11px 18px;
+
+    font-size:16px;
+
+    border-radius:20px;
+
+    transition:0.2s;
+}
+
+
+.topnav a:hover{
+
+    background:#F7D5DF;
+
+    transform:scale(1.04);
+}
+
+
+.topnav a.active{
+
+    background:#F7D5DF;
+
+    font-weight:bold;
+}
+
+.search-box{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:7px;
+
+    flex-wrap:wrap;
+}
+
+
+.search-box input{
+
+    width:230px;
+
+    padding:11px 16px;
+
+    border:2px solid #D991AD;
+
+    border-radius:20px;
+
+    outline:none;
+
+    font-family:"Comic Sans MS", cursive;
+
+    background:white;
+}
+
+
+.search-box input:focus{
+
+    border-color:#A95778;
+
+    box-shadow:
+    0 0 8px rgba(169,87,120,0.25);
+}
+
+
+.surprise-button{
+
+    border:none;
+
+    padding:11px 17px;
+
+    border-radius:20px;
+
+    background:#D991AD;
+
+    color:white;
+
+    font-family:"Comic Sans MS", cursive;
+
+    cursor:pointer;
+
+    transition:0.2s;
+}
+
+
+.surprise-button:hover{
+
+    background:#A95778;
+
+    transform:scale(1.05);
+}
+
+h1{
+
+    font-size:60px;
+
+    color:#9B4B6A;
+
+    margin-top:45px;
+
+    margin-bottom:8px;
+
+    text-shadow:
+    -2px -2px 0 white,
+     2px -2px 0 white,
+    -2px  2px 0 white,
+     2px  2px 0 white;
+}
+
+
+.how-to{
+
+    display:inline-block;
+
+    color:#8A5268;
+
+    background:#FFF7FA;
+
+    padding:12px 25px;
+
+    border-radius:20px;
+
+    font-size:23px;
+
+    margin:5px;
+}
+
+
+.recipes{
+
+    color:#D991AD;
+
+    font-family:Georgia, serif;
+
+    font-size:30px;
+
+    font-weight:bold;
+
+    letter-spacing:2px;
+
+    margin-top:25px;
+
+    margin-bottom:10px;
+}
+
+
+/* =====================================
+   ✨ WELCOME MESSAGE
+===================================== */
+
+.welcome-box{
+
+    width:90%;
+
+    max-width:800px;
+
+    margin:25px auto 35px;
+
+    padding:22px;
+
+    background:#FFF8FB;
+
+    border:4px solid #E5A7BD;
+
+    border-radius:30px;
+
+    box-shadow:
+    0 5px 15px rgba(0,0,0,0.10);
+
+    color:#805568;
+
+    font-size:18px;
+
+    line-height:1.6;
+}
+
+.pastry-search{
+
+    width:90%;
+
+    max-width:850px;
+
+    margin:20px auto 35px;
+
+    padding:25px;
+
+    background:#FFF8FB;
+
+    border:4px solid #E5A7BD;
+
+    border-radius:30px;
+
+    box-shadow:
+    0 5px 15px rgba(0,0,0,0.12);
+}
+
+
+.pastry-search h2{
+
+    font-size:30px;
+
+    color:#914766;
+
+    margin-top:0;
+}
+
+
+.search-row{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+}
+
+
+#pastrySearch{
+
+    width:350px;
+
+    padding:15px;
+
+    border-radius:20px;
+
+    border:3px solid #D991AD;
+
+    font-family:"Comic Sans MS", cursive;
+
+    font-size:16px;
+
+    outline:none;
+
+    background:#FFFDFE;
+}
+
+
+#pastrySearch:focus{
+
+    border-color:#A95778;
+
+    box-shadow:
+    0 0 8px rgba(169,87,120,0.3);
+}
+
+
+.search-row button{
+
+    padding:14px 18px;
+
+    border:none;
+
+    border-radius:20px;
+
+    font-family:"Comic Sans MS", cursive;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    background:#D991AD;
+
+    color:white;
+
+    transition:0.2s;
+}
+
+
+.search-row button:hover{
+
+    transform:scale(1.05);
+
+    background:#A95778;
+}
+
+
+#searchResult{
+
+    margin-top:20px;
+
+    padding:18px;
+
+    border-radius:20px;
+
+    background:#F8E3EB;
+
+    color:#8B4965;
+
+    font-size:19px;
+}
+
+#recommendationBox{
+
+    width:90%;
+
+    max-width:750px;
+
+    margin:25px auto;
+
+    padding:22px;
+
+    background:#FFF8FB;
+
+    border:4px solid #E5A7BD;
+
+    border-radius:25px;
+
+    box-shadow:
+    0 5px 15px rgba(0,0,0,0.12);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:20px;
+
+    animation:
+    recommendationPop 0.4s ease;
+}
+
+
+.recommendation-emoji{
+
+    font-size:60px;
+}
+
+
+.recommendation-small{
+
+    font-size:15px;
+
+    color:#B06A87;
+}
+
+
+#recommendationBox h2{
+
+    margin:5px;
+
+    color:#914766;
+
+    font-size:28px;
+}
+
+
+#recommendationBox p{
+
+    margin:5px;
+
+    font-size:17px;
+}
+
+
+@keyframes recommendationPop{
+
+    from{
+
+        transform:scale(0.8);
+
+        opacity:0;
+    }
+
+    to{
+
+        transform:scale(1);
+
+        opacity:1;
+    }
+
+}
+
+
+.row{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:stretch;
+
+    flex-wrap:wrap;
+
+    gap:25px;
+
+    padding:15px 25px;
+}
+
+
+.column{
+
+    width:30%;
+
+    min-width:280px;
+
+    max-width:350px;
+
+    display:flex;
+}
+
+
+.card{
+
+    background:#FFF9FB;
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    border:4px solid #E5A7BD;
+
+    box-shadow:
+    0 5px 15px rgba(0,0,0,0.12);
+
+    padding-top:15px;
+
+    width:100%;
+
+    height:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    transition:0.2s;
+}
+
+
+.card:hover{
+
+    transform:
+    translateY(-8px)
+    rotate(1deg);
+
+    box-shadow:
+    0 10px 20px rgba(0,0,0,0.16);
+}
+
+
+.card img{
+
+    width:180px;
+
+    height:180px;
+
+    object-fit:contain;
+
+    display:block;
+
+    margin:0 auto 10px;
+}
+
+
+.container{
+
+    padding:0 18px 18px;
+
+    text-align:center;
+
+    display:flex;
+
+    flex-direction:column;
+
+    flex-grow:1;
+}
+
+
+.container h2{
+
+    color:#934766;
+
+    min-height:58px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:25px;
+}
+
+
+.title{
+
+    color:#805568;
+
+    line-height:1.5;
+
+    min-height:145px;
+
+    font-family:"Trebuchet MS", Arial, sans-serif;
+
+    font-size:16px;
+}
+
+
+.container p:last-child{
+
+    margin-top:auto;
+}
+
+
+.button{
+
+    border:none;
+
+    padding:12px;
+
+    color:white;
+
+    background:#D991AD;
+
+    text-align:center;
+
+    cursor:pointer;
+
+    width:100%;
+
+    border-radius:18px;
+
+    font-family:"Comic Sans MS", cursive;
+
+    font-size:16px;
+
+    transition:0.2s;
+}
+
+
+.button:hover{
+
+    background:#A95778;
+
+    transform:scale(1.03);
+}
+
+
+.footer{
+
+    margin-top:45px;
+
+    padding:25px;
+
+    font-size:20px;
+
+    color:#8B4965;
+
+    background:#FFF0F4;
+}
+
+#diceOverlay{
+
+    display:none;
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:
+    rgba(55,25,45,0.80);
+
+    z-index:9999;
+
+    justify-content:center;
+
+    align-items:center;
+
+    backdrop-filter:blur(6px);
+}
+
+
+#diceBox{
+
+    text-align:center;
+
+    color:white;
+
+    font-family:"Comic Sans MS", cursive;
+
+    max-width:90%;
+}
+
+
+#dice{
+
+    font-size:150px;
+
+    display:inline-block;
+
+    filter:
+    drop-shadow(
+    0 10px 10px
+    rgba(0,0,0,0.35)
+    );
+}
+
+.dice-roll{
+
+    animation:
+    diceRoll 0.18s infinite;
+}
+
+
+@keyframes diceRoll{
+
+    0%{
+
+        transform:
+        rotate(0deg)
+        translateY(0)
+        scale(1);
+    }
+
+    25%{
+
+        transform:
+        rotate(25deg)
+        translateY(-20px)
+        scale(1.1);
+    }
+
+    50%{
+
+        transform:
+        rotate(-30deg)
+        translateY(10px)
+        scale(0.9);
+    }
+
+    75%{
+
+        transform:
+        rotate(25deg)
+        translateY(-15px)
+        scale(1.1);
+    }
+
+    100%{
+
+        transform:
+        rotate(0deg)
+        translateY(0)
+        scale(1);
+    }
+
+}
+
+#diceText{
+
+    font-size:25px;
+
+    text-shadow:
+    2px 2px 5px
+    rgba(0,0,0,0.4);
+}
+
+
+#diceResult{
+
+    font-size:35px;
+
+    background:#FFF7FA;
+
+    color:#8B495B;
+
+    padding:25px;
+
+    border-radius:30px;
+
+    display:none;
+
+    box-shadow:
+    0 10px 30px
+    rgba(0,0,0,0.3);
+}
+
+
+#diceResult strong{
+
+    font-size:30px;
+
+    color:#914766;
+}
+
+
+#diceResult button{
+
+    border:none;
+
+    background:#D991AD;
+
+    color:white;
+
+    padding:12px 25px;
+
+    border-radius:20px;
+
+    font-family:"Comic Sans MS", cursive;
+
+    font-size:16px;
+
+    cursor:pointer;
+}
+
+
+#diceResult button:hover{
+
+    background:#A95778;
+}
+
+.dice-pop{
+
+    animation:
+    dicePop 0.7s
+    cubic-bezier(.17,.67,.35,1.5);
+}
+
+
+@keyframes dicePop{
+
+    0%{
+
+        transform:scale(0);
+
+        opacity:0;
+    }
+
+    70%{
+
+        transform:scale(1.15);
+
+        opacity:1;
+    }
+
+    100%{
+
+        transform:scale(1);
+
+        opacity:1;
+    }
+
+}
+
+@media(max-width:700px){
+
+    body{
+
+        padding:0;
+    }
+
+
+    h1{
+
+        font-size:42px;
+
+        margin-top:30px;
+    }
+
+
+    .how-to{
+
+        font-size:19px;
+    }
+
+
+    .recipes{
+
+        font-size:24px;
+    }
+
+
+    .column{
+
+        width:90%;
+
+        max-width:350px;
+    }
+
+
+    #pastrySearch{
+
+        width:85%;
+    }
+
+
+    .search-box input{
+
+        width:190px;
+    }
+
+
+    #dice{
+
+        font-size:100px;
+    }
+
+
+    #diceText{
+
+        font-size:20px;
+    }
+
+
+    #recommendationBox{
+
+        flex-direction:column;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<div class="topnav">
+
+    <a
+        class="active"
+        href="index.html"
+    >
+        🏠 Home
+    </a>
+
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="🔍 Search pastries..."
+        >
+
+        <button
+            class="surprise-button"
+            onclick="surprisePastry()"
+        >
+            🎲 Surprise Me!
+        </button>
+
+    </div>
+
+
+    <a href="Mini game.html">
+        🎮 Mini Game
+    </a>
+
+    
+
+</div>
+
+<div id="diceOverlay">
+
+    <div id="diceBox">
+
+        <div id="dice">
+            🎲
+        </div>
+
+
+        <h2 id="diceText">
+            🎲 Rolling for your pastry...
+        </h2>
+
+
+        <div id="diceResult"></div>
+
+    </div>
+
+</div>
+
+<h1>
+    🧁 Slices of Sweetness 🥐
+</h1>
+
+
+<p class="how-to">
+    Your little online dessert café ✨
+</p>
+
+
+<p class="recipes">
+    BAKED GOOD CHOICES 😋
+</p>
+
+<div class="welcome-box">
+
+    Welcome to <b>Slices of Sweetness!</b> 🧁💗
+
+    <br>
+
+    Explore our delicious collection of homemade
+    pastries and find the perfect treat for your mood.
+
+    <br>
+
+    Not sure what you want?
+
+    <b>Search what you're craving</b> or let the
+    <b>🎲 Surprise Me!</b> button choose for you! ✨
+
+</div>
+
+<div class="pastry-search">
+
+    <h2>
+        🥐 What are you craving? ✨
+    </h2>
+
+
+    <div class="search-row">
+
+        <input
+            type="text"
+            id="pastrySearch"
+            placeholder="Tell me what you're craving... 💭"
+        >
+
+
+        <button
+            onclick="searchPastry()"
+        >
+            🔍 Search
+        </button>
+
+
+        <button
+            onclick="surprisePastry()"
+        >
+            🎲 Surprise Me!
+        </button>
+
+    </div>
+
+
+    <div id="searchResult">
+
+        ✨ Your perfect pastry is waiting... ✨
+
+    </div>
+
+</div>
+
+<div class="row">
+
+
+    <!-- STRAWBERRY -->
+
+    <div class="column">
+
+        <div
+            class="card"
+            data-name="Strawberry Shortcake"
+        >
+
+            <img
+                src="Strawberry-Shortcake-Recipe.jpg"
+                alt="Strawberry Shortcake"
+            >
+
+
+            <div class="container">
+
+                <h2>
+                    Strawberry Shortcake
+                </h2>
+
+
+                <p class="title">
+
+                    A fluffy vanilla sponge layered
+                    with rich whipped cream and sweet,
+                    juicy strawberries.
+
+                    Every bite is soft, creamy,
+                    and bursting with fresh
+                    strawberry flavour. 🍓🍰✨
+
+                </p>
+
+
+                <p>
+
+                    <button
+                        class="button"
+                        onclick="window.location.href='Strawberry.html'"
+                    >
+                        Make This 🍓
+                    </button>
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- BANANA -->
+
+    <div class="column">
+
+        <div
+            class="card"
+            data-name="Banana Bread"
+        >
+
+            <img
+                src="Banana Bread.jpeg"
+                alt="Banana Bread"
+            >
+
+
+            <div class="container">
+
+                <h2>
+                    Banana Bread
+                </h2>
+
+
+                <p class="title">
+
+                    🍌🍞 A soft, moist loaf packed
+                    with sweet, ripe bananas and
+                    a hint of warm cinnamon.
+
+                    Every bite is fluffy, rich,
+                    and comforting.
+
+                </p>
+
+
+                <p>
+
+                    <button
+                        class="button"
+                        onclick="window.location.href='Banana_bread.html'"
+                    >
+                        Make This 🍌
+                    </button>
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- PEACH -->
+
+    <div class="column">
+
+        <div
+            class="card"
+            data-name="Peach Pie"
+        >
+
+            <img
+                src="peach pie.jpeg"
+                alt="Peach Pie"
+            >
+
+
+            <div class="container">
+
+                <h2>
+                    Peach Pie
+                </h2>
+
+
+                <p class="title">
+
+                    🍑🥧 A warm, buttery pastry
+                    filled with sweet, juicy peaches
+                    and a hint of cinnamon.
+
+                    Every bite is flaky, fruity,
+                    and deliciously comforting.
+
+                </p>
+
+
+                <p>
+
+                    <button
+                        class="button"
+                        onclick="window.location.href='peach pie.html'"
+                    >
+                        Make This 🍑
+                    </button>
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================
+     🫐 BLUEBERRY / MANGO / FIG
+===================================== -->
+
+<div class="row">
+
+
+    <!-- BLUEBERRY -->
+
+    <div class="column">
+
+        <div
+            class="card"
+            data-name="Blueberry Cheesecake"
+        >
+
+            <img
+                src="blueberry cheesecake.jpeg"
+                alt="Blueberry Cheesecake"
+            >
+
+
+            <div class="container">
+
+                <h2>
+                    Blueberry Cheesecake
+                </h2>
+
+
+                <p class="title">
+
+                    A creamy blueberry cheesecake
+                    with a buttery biscuit base,
+                    rich smooth filling, and sweet,
+                    juicy blueberries.
+
+                    🫐🍰✨
+
+                </p>
+
+
+                <p>
+
+                    <button
+                        class="button"
+                        onclick="window.location.href='Blueberry Cheesecake.html'"
+                    >
+                        Make This 🫐
+                    </button>
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- MANGO -->
+
+    <div class="column">
+
+        <div
+            class="card"
+            data-name="Mango Tart"
+        >
+
+            <img
+                src="Mango tart.jpeg"
+                alt="Mango Tart"
+            >
+
+
+            <div class="container">
+
+                <h2>
+                    Mango Tart
+                </h2>
+
+
+                <p class="title">
+
+                    🥭🥧 A buttery golden tart
+                    filled with smooth creamy filling
+                    and topped with sweet,
+                    juicy mango slices.
+
+                    A little taste of summer! ☀️
+
+                </p>
+
+
+                <p>
+
+                    <button
+                        class="button"
+                        onclick="window.location.href='Mango Tart.html'"
+                    >
+                        Make This 🥭
+                    </button>
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- FIG -->
+
+    <div class="column">
+
+        <div
+            class="card"
+            data-name="Fig Danish"
+        >
+
+            <img
+                src="Fig Danish.jpeg"
+                alt="Fig Danish"
+            >
+
+
+            <div class="container">
+
+                <h2>
+                    Fig Danish
+                </h2>
+
+
+                <p class="title">
+
+                    🥐🍇 A flaky, buttery pastry
+                    filled with creamy cheese
+                    and topped with sweet,
+                    juicy figs.
+
+                    Every bite is crisp and creamy.
+
+                </p>
+
+
+                <p>
+
+                    <button
+                        class="button"
+                        onclick="window.location.href='Fig Danish.html'"
+                    >
+                        Make This 💜
+                    </button>
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================
+     🍎 CHERRY / RASPBERRY
+===================================== -->
+
+<div class="row">
+
+
+    <!-- APPLE -->
+
+    <div class="column">
+
+        <div
+            class="card"
+            data-name="Apple Strudel"
+        >
+
+            <img
+                src="Apple Strudel.jpeg"
+                alt="Apple Strudel"
+            >
+
+
+            <div class="container">
+
+                <h2>
+                    Apple Strudel
+                </h2>
+
+
+                <p class="title">
+
+                    A warm apple strudel with
+                    flaky, buttery pastry,
+                    sweet cinnamon-spiced apples,
+                    and a golden filling.
+
+                    🍎🥧✨
+
+                </p>
+
+
+                <p>
+
+                    <button
+                        class="button"
+                        onclick="window.location.href='Apple Strudel.html'"
+                    >
+                        Make This 🍎
+                    </button>
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- CHERRY -->
+
+    <div class="column">
+
+        <div
+            class="card"
+            data-name="Cherry Turnover"
+        >
+
+            <img
+                src="Cherry turnover.jpeg"
+                alt="Cherry Turnover"
+            >
+
+
+            <div class="container">
+
+                <h2>
+                    Cherry Turnover
+                </h2>
+
+
+                <p class="title">
+
+                    🍒🥐 A flaky golden pastry
+                    filled with sweet, juicy cherries
+                    and a delicious buttery filling.
+
+                    Every bite is crisp and fruity!
+
+                </p>
+
+
+                <p>
+
+                    <button
+                        class="button"
+                        onclick="window.location.href='Cherry Turnover.html'"
+                    >
+                        Make This 🍒
+                    </button>
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- RASPBERRY -->
+
+    <div class="column">
+
+        <div
+            class="card"
+            data-name="Raspberry Croissant"
+        >
+
+            <img
+                src="Raspberry Croissant.jpeg"
+                alt="Raspberry Croissant"
+            >
+
+
+            <div class="container">
+
+                <h2>
+                    Raspberry Croissant
+                </h2>
+
+
+                <p class="title">
+
+                    🍓🥐 A flaky, buttery pastry
+                    filled with creamy goodness
+                    and sweet, juicy raspberries.
+
+                    Every bite is crisp, soft,
+                    and bursting with berry flavour.
+
+                </p>
+
+
+                <p>
+
+                    <button
+                        class="button"
+                        onclick="window.location.href='Raspberry Croissant.html'"
+                    >
+                        Make This 💗
+                    </button>
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================
+     💗 FOOTER
+===================================== -->
+
+<div class="footer">
+
+    ✨ Baked with love, sugar, and a little bit of magic! 🧁💗 ✨
+
+</div>
+
+
+<script>
+
+/* =====================================
+   🥐 PASTRY DATA
+===================================== */
+
+const pastries = [
+
+    {
+        name:"Apple Strudel",
+        emoji:"🍎🥧",
+
+        message:
+        "Warm, cozy, and filled with cinnamon goodness! 🤎",
+
+        keywords:[
+            "apple",
+            "warm",
+            "sweet",
+            "cinnamon",
+            "fruity",
+            "fruit",
+            "flaky",
+            "crispy",
+            "cozy",
+            "comforting"
+        ],
+
+        link:"Apple Strudel.html"
+    },
+
+
+    {
+        name:"Banana Bread",
+        emoji:"🍌🍞",
+
+        message:
+        "Soft, warm, and full of comforting banana goodness! 💛",
+
+        keywords:[
+            "banana",
+            "soft",
+            "sweet",
+            "warm",
+            "comforting",
+            "moist",
+            "cozy",
+            "breakfast",
+            "cinnamon"
+        ],
+
+        link:"Banana_bread.html"
+    },
+
+
+    {
+        name:"Blueberry Cheesecake",
+        emoji:"🫐🍰",
+
+        message:
+        "Creamy, fruity, and absolutely dreamy! 💙",
+
+        keywords:[
+            "blueberry",
+            "berry",
+            "berries",
+            "sweet",
+            "creamy",
+            "cream",
+            "cheesecake",
+            "fruity",
+            "fruit",
+            "soft",
+            "tangy",
+            "sour"
+        ],
+
+        link:"Blueberry Cheesecake.html"
+    },
+
+
+    {
+        name:"Cherry Turnover",
+        emoji:"🍒🥐",
+
+        message:
+        "Sweet, juicy, and wonderfully flaky! ❤️",
+
+        keywords:[
+            "cherry",
+            "sweet",
+            "fruity",
+            "fruit",
+            "flaky",
+            "crispy",
+            "juicy",
+            "berry",
+            "berries",
+            "tangy",
+            "sour"
+        ],
+
+        link:"Cherry Turnover.html"
+    },
+
+
+    {
+        name:"Fig Danish",
+        emoji:"🍇🥐",
+
+        message:
+        "Flaky, buttery, and perfectly fruity! 💜",
+
+        keywords:[
+            "fig",
+            "sweet",
+            "fruity",
+            "fruit",
+            "flaky",
+            "buttery",
+            "creamy",
+            "cream",
+            "cheese",
+            "soft",
+            "breakfast"
+        ],
+
+        link:"Fig Danish.html"
+    },
+
+
+    {
+        name:"Mango Tart",
+        emoji:"🥭🥧",
+
+        message:
+        "A tropical little treat for a sunny mood! ☀️",
+
+        keywords:[
+            "mango",
+            "tropical",
+            "sweet",
+            "fruity",
+            "fruit",
+            "fresh",
+            "creamy",
+            "crisp",
+            "summer",
+            "juicy"
+        ],
+
+        link:"Mango Tart.html"
+    },
+
+
+    {
+        name:"Peach Pie",
+        emoji:"🍑🥧",
+
+        message:
+        "Warm, fruity, and deliciously comforting! 🍑",
+
+        keywords:[
+            "peach",
+            "sweet",
+            "fruity",
+            "fruit",
+            "warm",
+            "juicy",
+            "cinnamon",
+            "comforting",
+            "flaky"
+        ],
+
+        link:"peach pie.html"
+    },
+
+
+    {
+        name:"Raspberry Croissant",
+        emoji:"🍓🥐",
+
+        message:
+        "Buttery, flaky, and bursting with berry flavour! 💗",
+
+        keywords:[
+            "raspberry",
+            "berry",
+            "berries",
+            "sweet",
+            "fruity",
+            "fruit",
+            "flaky",
+            "buttery",
+            "crispy",
+            "tangy",
+            "sour",
+            "breakfast"
+        ],
+
+        link:"Raspberry Croissant.html"
+    },
+
+
+    {
+        name:"Strawberry Shortcake",
+        emoji:"🍓🍰",
+
+        message:
+        "Soft, creamy, and bursting with fresh strawberry flavour! 💕",
+
+        keywords:[
+            "strawberry",
+            "berry",
+            "berries",
+            "sweet",
+            "fruity",
+            "fruit",
+            "creamy",
+            "soft",
+            "fresh",
+            "cream",
+            "juicy"
+        ],
+
+        link:"Strawberry.html"
+    }
+
+];
+
+
+/* =====================================
+   🔍 SEARCH
+===================================== */
+
+function searchPastry(){
+
+    const search =
+        document
+        .getElementById("pastrySearch")
+        .value
+        .toLowerCase()
+        .trim();
+
+
+    const result =
+        document.getElementById("searchResult");
+
+
+    const cards =
+        document.querySelectorAll(".card");
+
+
+    if(search === ""){
+
+        cards.forEach(function(card){
+
+            card.parentElement.style.display =
+                "flex";
+
+        });
+
+
+        result.innerHTML =
+            "✨ Your perfect pastry is waiting... ✨";
+
+        removeRecommendation();
+
+        return;
+    }
+
+
+    /* EXACT NAME */
+
+    const exactMatch =
+        pastries.find(function(pastry){
+
+            return pastry.name
+            .toLowerCase()
+            .includes(search);
+
+        });
+
+
+    if(exactMatch){
+
+        cards.forEach(function(card){
+
+            const name =
+                card.dataset.name;
+
+
+            if(name === exactMatch.name){
+
+                card.parentElement.style.display =
+                    "flex";
+
+            }else{
+
+                card.parentElement.style.display =
+                    "none";
+
+            }
+
+        });
+
+
+        result.innerHTML =
+
+            "✨ I found your treat! ✨<br><br>" +
+
+            "<strong>" +
+            exactMatch.name +
+            "</strong><br>" +
+
+            exactMatch.message;
+
+
+        showRecommendation(
+            exactMatch
+        );
+
+
+        playSearchSound();
+
+        return;
+    }
+
+
+    /* KEYWORD SEARCH */
+
+    const matches =
+        pastries.filter(function(pastry){
+
+            return pastry.keywords.some(
+                function(keyword){
+
+                    return(
+                        keyword.includes(search)
+                        ||
+                        search.includes(keyword)
+                    );
+
+                }
+            );
+
+        });
+
+
+    if(matches.length > 0){
+
+        cards.forEach(function(card){
+
+            const name =
+                card.dataset.name;
+
+
+            const found =
+                matches.some(function(pastry){
+
+                    return pastry.name === name;
+
+                });
+
+
+            if(found){
+
+                card.parentElement.style.display =
+                    "flex";
+
+            }else{
+
+                card.parentElement.style.display =
+                    "none";
+
+            }
+
+        });
+
+
+        const randomIndex =
+            Math.floor(
+                Math.random() *
+                matches.length
+            );
+
+
+        const pastry =
+            matches[randomIndex];
+
+
+        result.innerHTML =
+
+            "💭 Based on your craving...<br><br>" +
+
+            "✨ I recommend <strong>" +
+
+            pastry.name +
+
+            "</strong>!<br>" +
+
+            pastry.message;
+
+
+        showRecommendation(
+            pastry
+        );
+
+
+        playSearchSound();
+
+        return;
+    }
+
+
+    /* NORMAL TEXT SEARCH */
+
+    let foundText = false;
+
+
+    cards.forEach(function(card){
+
+        const text =
+            card.innerText.toLowerCase();
+
+
+        if(text.includes(search)){
+
+            card.parentElement.style.display =
+                "flex";
+
+            foundText = true;
+
+        }else{
+
+            card.parentElement.style.display =
+                "none";
+
+        }
+
+    });
+
+
+    if(foundText){
+
+        result.innerHTML =
+            "✨ I found something that matches your search! 💗";
+
+        removeRecommendation();
+
+        return;
+    }
+
+
+    /* NOTHING FOUND */
+
+    cards.forEach(function(card){
+
+        card.parentElement.style.display =
+            "none";
+
+    });
+
+
+    result.innerHTML =
+
+        "🥺 Hmm... nothing quite matched!<br><br>" +
+
+        "Try <b>sweet</b>, <b>berry</b>, " +
+
+        "<b>creamy</b>, <b>flaky</b>, " +
+
+        "<b>warm</b>, or <b>fruity</b> 💗";
+
+
+    showNoResult();
+
+}
+
+
+/* =====================================
+   ✨ RECOMMENDATION
+===================================== */
+
+function showRecommendation(pastry){
+
+    removeRecommendation();
+
+
+    const box =
+        document.createElement("div");
+
+
+    box.id =
+        "recommendationBox";
+
+
+    box.innerHTML =
+
+        "<div class='recommendation-emoji'>" +
+
+        pastry.emoji +
+
+        "</div>" +
+
+        "<div>" +
+
+        "<span class='recommendation-small'>" +
+
+        "✨ We found something for you! ✨" +
+
+        "</span>" +
+
+        "<h2>" +
+
+        pastry.name +
+
+        "</h2>" +
+
+        "<p>" +
+
+        pastry.message +
+
+        "</p>" +
+
+        "</div>";
+
+
+    document
+        .querySelector(".pastry-search")
+        .after(box);
+
+}
+
+
+/* =====================================
+   ❌ NO RESULT
+===================================== */
+
+function showNoResult(){
+
+    removeRecommendation();
+
+
+    const box =
+        document.createElement("div");
+
+
+    box.id =
+        "recommendationBox";
+
+
+    box.innerHTML =
+
+        "<div class='recommendation-emoji'>🥺</div>" +
+
+        "<div>" +
+
+        "<span class='recommendation-small'>" +
+
+        "Hmm... nothing quite matched!" +
+
+        "</span>" +
+
+        "<h2>Try another pastry mood!</h2>" +
+
+        "<p>" +
+
+        "Try <b>sweet</b>, <b>berry</b>, " +
+
+        "<b>creamy</b>, <b>flaky</b>, " +
+
+        "or <b>warm</b> 💗" +
+
+        "</p>" +
+
+        "</div>";
+
+
+    document
+        .querySelector(".pastry-search")
+        .after(box);
+
+}
+
+
+/* =====================================
+   REMOVE RECOMMENDATION
+===================================== */
+
+function removeRecommendation(){
+
+    const oldBox =
+        document.getElementById(
+            "recommendationBox"
+        );
+
+
+    if(oldBox){
+
+        oldBox.remove();
+
+    }
+
+}
+
+
+/* =====================================
+   🔍 SEARCH SOUND
+===================================== */
+
+function playSearchSound(){
+
+    const audio =
+        new(
+            window.AudioContext ||
+            window.webkitAudioContext
+        )();
+
+
+    const oscillator =
+        audio.createOscillator();
+
+
+    const gain =
+        audio.createGain();
+
+
+    oscillator.type =
+        "sine";
+
+
+    oscillator.frequency.setValueAtTime(
+        520,
+        audio.currentTime
+    );
+
+
+    oscillator.frequency.exponentialRampToValueAtTime(
+        850,
+        audio.currentTime + 0.12
+    );
+
+
+    gain.gain.setValueAtTime(
+        0.15,
+        audio.currentTime
+    );
+
+
+    gain.gain.exponentialRampToValueAtTime(
+        0.001,
+        audio.currentTime + 0.2
+    );
+
+
+    oscillator.connect(gain);
+
+    gain.connect(
+        audio.destination
+    );
+
+
+    oscillator.start();
+
+    oscillator.stop(
+        audio.currentTime + 0.2
+    );
+
+}
+
+
+/* =====================================
+   🎲 SURPRISE ME
+===================================== */
+
+function surprisePastry(){
+
+    const randomIndex =
+        Math.floor(
+            Math.random() *
+            pastries.length
+        );
+
+
+    const pastry =
+        pastries[randomIndex];
+
+
+    const overlay =
+        document.getElementById(
+            "diceOverlay"
+        );
+
+
+    const dice =
+        document.getElementById(
+            "dice"
+        );
+
+
+    const diceText =
+        document.getElementById(
+            "diceText"
+        );
+
+
+    const result =
+        document.getElementById(
+            "diceResult"
+        );
+
+
+    /* SHOW */
+
+    overlay.style.display =
+        "flex";
+
+
+    /* RESET */
+
+    dice.style.display =
+        "inline-block";
+
+
+    dice.innerHTML =
+        "🎲";
+
+
+    dice.classList.remove(
+        "dice-pop"
+    );
+
+
+    result.innerHTML =
+        "";
+
+
+    result.style.display =
+        "none";
+
+
+    dice.classList.add(
+        "dice-roll"
+    );
+
+
+    diceText.innerHTML =
+        "🎲 Rolling for your pastry...";
+
+
+    playDiceSound();
+
+
+    /* TEXT CHANGES */
+
+    setTimeout(function(){
+
+        diceText.innerHTML =
+            "✨ Mixing up the pastries...";
+
+    },800);
+
+
+    setTimeout(function(){
+
+        diceText.innerHTML =
+            "🎲 One more roll...";
+
+    },1500);
+
+
+    /* RESULT */
+
+    setTimeout(function(){
+
+        dice.classList.remove(
+            "dice-roll"
+        );
+
+
+        diceText.innerHTML =
+            "✨ YOU GOT... ✨";
+
+
+        result.style.display =
+            "inline-block";
+
+
+        result.innerHTML =
+
+            "<div style='font-size:65px'>" +
+
+            pastry.emoji +
+
+            "</div>" +
+
+            "<strong>" +
+
+            pastry.name +
+
+            "</strong>" +
+
+            "<br><br>" +
+
+            "<span style='font-size:18px'>" +
+
+            pastry.message +
+
+            "</span>" +
+
+            "<br><br>" +
+
+            "<button onclick=\"window.location.href='" +
+
+            pastry.link +
+
+            "'>" +
+
+            "🍰 Make This!" +
+
+            "</button>";
+
+
+        result.classList.add(
+            "dice-pop"
+        );
+
+
+        playPopSound();
+
+
+        document.getElementById(
+            "searchResult"
+        ).innerHTML =
+
+            "🎉 Your pastry destiny is...<br><br>" +
+
+            "<strong>" +
+
+            pastry.name +
+
+            "</strong><br>" +
+
+            pastry.message;
+
+
+    },2300);
+
+
+    /* CLOSE */
+
+    setTimeout(function(){
+
+        overlay.style.display =
+            "none";
+
+
+        result.style.display =
+            "none";
+
+
+        result.classList.remove(
+            "dice-pop"
+        );
+
+    },7000);
+
+}
+
+
+/* =====================================
+   🎲 DICE SOUND
+===================================== */
+
+function playDiceSound(){
+
+    const audio =
+        new(
+            window.AudioContext ||
+            window.webkitAudioContext
+        )();
+
+
+    let time =
+        audio.currentTime;
+
+
+    for(
+        let i = 0;
+        i < 14;
+        i++
+    ){
+
+        const oscillator =
+            audio.createOscillator();
+
+
+        const gain =
+            audio.createGain();
+
+
+        oscillator.type =
+            "square";
+
+
+        oscillator.frequency.setValueAtTime(
+
+            120 +
+            Math.random() * 180,
+
+            time
+
+        );
+
+
+        gain.gain.setValueAtTime(
+            0.05,
+            time
+        );
+
+
+        gain.gain.exponentialRampToValueAtTime(
+
+            0.001,
+
+            time + 0.08
+
+        );
+
+
+        oscillator.connect(gain);
+
+        gain.connect(
+            audio.destination
+        );
+
+
+        oscillator.start(time);
+
+        oscillator.stop(
+            time + 0.08
+        );
+
+
+        time += 0.16;
+
+    }
+
+}
+
+
+/* =====================================
+   💥 POP SOUND
+===================================== */
+
+function playPopSound(){
+
+    const audio =
+        new(
+            window.AudioContext ||
+            window.webkitAudioContext
+        )();
+
+
+    const oscillator =
+        audio.createOscillator();
+
+
+    const gain =
+        audio.createGain();
+
+
+    oscillator.type =
+        "sine";
+
+
+    oscillator.frequency.setValueAtTime(
+
+        180,
+
+        audio.currentTime
+
+    );
+
+
+    oscillator.frequency.exponentialRampToValueAtTime(
+
+        600,
+
+        audio.currentTime + 0.12
+
+    );
+
+
+    gain.gain.setValueAtTime(
+
+        0.25,
+
+        audio.currentTime
+
+    );
+
+
+    gain.gain.exponentialRampToValueAtTime(
+
+        0.001,
+
+        audio.currentTime + 0.25
+
+    );
+
+
+    oscillator.connect(gain);
+
+    gain.connect(
+        audio.destination
+    );
+
+
+    oscillator.start();
+
+    oscillator.stop(
+
+        audio.currentTime + 0.25
+
+    );
+
+}
+
+
+/* =====================================
+   ⌨️ ENTER KEY
+===================================== */
+
+document
+    .getElementById("pastrySearch")
+    .addEventListener(
+        "keydown",
+        function(event){
+
+            if(event.key === "Enter"){
+
+                searchPastry();
+
+            }
+
+        }
+    );
+
+
+/* =====================================
+   🔍 NAVIGATION SEARCH
+===================================== */
+
+document
+    .getElementById("searchInput")
+    .addEventListener(
+        "keydown",
+        function(event){
+
+            if(event.key === "Enter"){
+
+                document
+                    .getElementById("pastrySearch")
+                    .value =
+                    this.value;
+
+                searchPastry();
+
+                document
+                    .getElementById("pastrySearch")
+                    .scrollIntoView({
+                        behavior:"smooth"
+                    });
+
+            }
+
+        }
+    );
+
+</script>
+
+</body>
+
+</html>
